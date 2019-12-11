@@ -19,15 +19,14 @@ CREATE TABLE regions (
 	region_id INT (11) UNSIGNED NOT NULL,
 	region_name VARCHAR(25),
 	PRIMARY KEY (region_id)
-	);
+)ENGINE=INNODB;
 
 CREATE TABLE countries (
 	country_id CHAR(2) NOT NULL,
 	country_name VARCHAR(40),
 	region_id INT (11) UNSIGNED NOT NULL,
 	PRIMARY KEY (country_id)
-);
-
+)ENGINE=INNODB;
 
 CREATE TABLE locations (
 	location_id INT (11) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -37,7 +36,7 @@ CREATE TABLE locations (
 	state_province VARCHAR(25),
 	country_id CHAR(2) NOT NULL,
 	PRIMARY KEY (location_id)
-	);
+)ENGINE=INNODB;
 
 CREATE TABLE departments (
 	department_id INT (11) UNSIGNED NOT NULL,
@@ -45,7 +44,7 @@ CREATE TABLE departments (
 	manager_id INT (11) UNSIGNED,
 	location_id INT (11) UNSIGNED,
 	PRIMARY KEY (department_id)
-	);
+)ENGINE=INNODB;
 
 CREATE TABLE jobs (
 	job_id VARCHAR(10) NOT NULL,
@@ -53,7 +52,7 @@ CREATE TABLE jobs (
 	min_salary DECIMAL(8, 0) UNSIGNED,
 	max_salary DECIMAL(8, 0) UNSIGNED,
 	PRIMARY KEY (job_id)
-	);
+)ENGINE=INNODB;
 
 CREATE TABLE employees (
 	employee_id INT (11) UNSIGNED NOT NULL,
@@ -68,7 +67,7 @@ CREATE TABLE employees (
 	manager_id INT (11) UNSIGNED,
 	department_id INT (11) UNSIGNED,
 	PRIMARY KEY (employee_id)
-	);
+)ENGINE=INNODB;
 
 CREATE TABLE job_history (
 	employee_id INT (11) UNSIGNED NOT NULL,
@@ -76,12 +75,12 @@ CREATE TABLE job_history (
 	end_date DATE NOT NULL,
 	job_id VARCHAR(10) NOT NULL,
 	department_id INT (11) UNSIGNED NOT NULL
-	);
+)ENGINE=INNODB;
 
 ALTER TABLE job_history ADD UNIQUE INDEX (
 	employee_id,
 	start_date
-	);
+);
 
 
 CREATE VIEW emp_details_view
